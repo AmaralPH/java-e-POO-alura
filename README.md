@@ -1,5 +1,5 @@
 # java-e-POO-alura
-Exercícios realizados durante a formação de Java e Programação Orientada a objetos realizado na Alura
+Exercícios realizados durante a formação de "Java e Programação Orientada" a objetos realizado na Alura
 
 
 # Conteudo da formação
