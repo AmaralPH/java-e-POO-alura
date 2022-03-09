@@ -1,0 +1,16 @@
+
+public class FatorialLoopFor {
+
+	public static void main(String[] args) {
+		for (int i = 1; i <= 10; i++) {
+			int fat = i;
+			for (int j = 0; j < i; j++) {
+				if (fat == 1) {
+					break;
+				}
+				fat = fat * j;
+			}
+			System.out.println(fat);
+		}
+	}
+}
