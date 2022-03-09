@@ -1,0 +1,7 @@
+
+public class Designer {
+
+	public double getBonificacao() {
+		return 200.0;
+	}
+}
