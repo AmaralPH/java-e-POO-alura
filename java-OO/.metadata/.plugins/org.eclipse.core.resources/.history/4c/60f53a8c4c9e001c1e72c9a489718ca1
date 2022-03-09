@@ -1,0 +1,16 @@
+
+public class TestaMetodos {
+
+	public static void main(String[] args) {
+		Conta contaDoPedro = new Conta();
+		Conta contaDaHinara = new Conta();
+		
+		contaDoPedro.deposita(1900);
+		System.out.println(contaDoPedro.saldo);
+		System.out.println(contaDaHinara.saldo);
+		
+		contaDoPedro.transfere(900, contaDaHinara);
+		System.out.println(contaDoPedro.saldo);
+		System.out.println(contaDaHinara.saldo);
+	}
+}
