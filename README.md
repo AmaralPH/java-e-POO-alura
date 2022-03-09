@@ -7,10 +7,10 @@ A formação em "Java e Orientação a Objetos" da Alura cobre os conteúdos fun
 aplicados a linguagem.
 
 Ela é dividida em 3 partes:
-  []1 - Dividida em 4 cursos, cobre a sintaxe e POO num nivel conceitual, através de um projeto incrementado a cada novo curso. 
-  []2 - Dividida em 4 cursos também, cobre as principais bibliotecas da linguagem e Data Types. Nela iremos consolidar os conhecimentos da
+  [ ] 1 - Dividida em 4 cursos, cobre a sintaxe e POO num nivel conceitual, através de um projeto incrementado a cada novo curso. 
+  [ ] 2 - Dividida em 4 cursos também, cobre as principais bibliotecas da linguagem e Data Types. Nela iremos consolidar os conhecimentos da
  primeira parte através de aplicações mais complexas usando o Java de uma forma mais próxima da utilização feita no mercado.
-  []3 - Dividida em 2 cursos, cobre Desenvolvimento Orientado a Testes (TDD) e testes automaticados com JUnit.
+  [ ] 3 - Dividida em 2 cursos, cobre Desenvolvimento Orientado a Testes (TDD) e testes automaticados com JUnit.
 
 
 # Objetivo
