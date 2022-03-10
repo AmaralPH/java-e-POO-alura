@@ -1,7 +1,8 @@
 
 public class Conta {
-
-	void deposita() {
-		
+	private int saldo;
+	
+	void deposita(double valor) throws MinhaExcecao {
+		this.saldo += valor;
 	}
 }
