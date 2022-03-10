@@ -7,6 +7,9 @@ public abstract class Conta {
 	
 	public Conta(int agencia, int numero) {
 		Conta.total++;
+		if (agencia < 1 || numero < 1) {
+			throw new IllegalArgumentException("Agencia ou Numero da conta inválido");
+		}
 		this.agencia = agencia;
 		this.numero = numero;
 	}
