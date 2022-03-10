@@ -7,10 +7,19 @@ A formação em [Java e Orientação a Objetos](https://cursos.alura.com.br/form
 aplicados a linguagem.
 
 Ela é dividida em 3 partes:
-  - [ ] 1. Dividida em 4 cursos, cobre a sintaxe e POO num nivel conceitual, através de um projeto incrementado a cada novo curso. 
-  - [ ] 2. Dividida em 4 cursos também, cobre as principais bibliotecas da linguagem e *Data Types*. Nela iremos consolidar os conhecimentos da
- primeira parte através de aplicações mais complexas usando o Java de uma forma mais próxima da utilização feita no mercado.
-  - [ ] 3. Dividida em 2 cursos, cobre Desenvolvimento Orientado a Testes (TDD) e testes automaticados com JUnit.
+  - [X] 1. Entender a linguagem Java e orientação a objetos
+    - [X] - Java JRE e JDK: escreva o seu primeiro código com Eclipse
+    - [X] - Java OO: introdução à Orientação a Objetos
+    - [X] - Java Polimorfismo: entenda herança e interfaces
+    - [X] - Java Exceções: aprenda a criar, lançar e controlar exceções
+  - [ ] 2. Conhecer as principais bibliotecas
+    - [ ] - Java e java.lang: programe com a classe Object e String
+    - [ ] - Java e java.util: Coleções, Wrappers e Lambda expressions
+    - [ ] - Java e java.io: Streams, Reader e Writers
+    - [ ] - Java Collections: Dominando Listas, Sets e Mapas
+  - [ ] 3. Aprofundar em Java moderno e TDD
+    - [ ] - Java moderno: tire proveito dos novos recursos do Java 8
+    - [ ] - TDD e Java: testes automatizados com JUnit
 
 
 # Objetivo
