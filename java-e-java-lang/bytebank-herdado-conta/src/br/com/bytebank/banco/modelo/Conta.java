@@ -77,4 +77,9 @@ public abstract class Conta {
 	public void setTitular(Cliente titular) {
 		this.titular = titular;
 	}
+	
+	@Override
+	public String toString() {
+		return "Numero: " + this.numero + ", Agencia: " + this.agencia;
+	}
 }
