@@ -1,3 +1,0 @@
-INDEX VERSION 1.131+/home/pedroamaral/Documentos/Alura/java-e-POO/aula-7/.metadata/.plugins/org.eclipse.jdt.core
-3245108113.index
-646308851.index
