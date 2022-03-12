@@ -13,7 +13,7 @@ Ela é dividida em 3 partes:
     - [X] - Java Polimorfismo: entenda herança e interfaces
     - [X] - Java Exceções: aprenda a criar, lançar e controlar exceções
   - [ ] 2. Conhecer as principais bibliotecas
-    - [ ] - Java e java.lang: programe com a classe Object e String
+    - [X] - Java e java.lang: programe com a classe Object e String
     - [ ] - Java e java.util: Coleções, Wrappers e Lambda expressions
     - [ ] - Java e java.io: Streams, Reader e Writers
     - [ ] - Java Collections: Dominando Listas, Sets e Mapas
