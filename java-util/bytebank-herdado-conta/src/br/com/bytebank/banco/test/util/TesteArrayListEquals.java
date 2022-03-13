@@ -19,7 +19,7 @@ public class TesteArrayListEquals {
 	    // verifica se a conta cc2 está na lista
 	    boolean existe = lista.contains(cc2);
 	    
-	    // deveria retornar true, pq não retorna?
+	    // depois do Override da função equals, passa a retornar true
 	    System.out.println("Já existe? " + existe);
 
 	    for(Conta conta : lista){
