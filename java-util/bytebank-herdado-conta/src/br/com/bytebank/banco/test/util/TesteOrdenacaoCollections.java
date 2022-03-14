@@ -9,7 +9,7 @@ import br.com.bytebank.banco.modelo.Conta;
 import br.com.bytebank.banco.modelo.ContaCorrente;
 import br.com.bytebank.banco.modelo.ContaPoupanca;
 
-public class TesteComparatorCollections {
+public class TesteOrdenacaoCollections {
 
 	public static void main(String[] args) {
 		
