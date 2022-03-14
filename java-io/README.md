@@ -59,3 +59,51 @@
     2. Leitura linha a linha do arquivo e detecção de seu fim;
     3. Utilização de *exceptions* pelo Java IO caso a operação de leitura não saia como esperado;
     4. Classes abstratas e concretas para leitura.
+
+## Aula 2 - Escrita com [java.io](http://java.io) [tempo: 50min]
+
+- Minhas notas
+    - A lógica da escrita de dados é muito semelhante a lógica da leitura, mas utilizando classes que servem para escritas
+    - Precisamos criar um **`FileOutputStream`** que recebe o nome do arquivo, passamos ele para um **`OutputStreamWriter`** que vai lidar com caracteres e não bytecode, em seguida passamos ele para um **`BufferedWriter`** que terá as funções necessárias para escrever no arquivo.
+    - Ao final o Buffer precisa ser fechado
+    - Exemplo de código:
+        
+        ```java
+        //Código omitido
+        
+        public class TesteEscrita {
+        
+                public static void main(String[] args) throws IOException {
+        
+                        //Fluxo de Entrada com Arquivo
+                        OutputStream fos = new FileOutputStream("lorem2.txt");
+                        Writer osw = new OutputStreamWriter(fos);
+                        BufferedWriter bw = new BufferedWriter(osw);
+        
+                        bw.write("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod");
+                        bw.newLine();
+                        bw.newLine();
+                        bw.write("asfasdfsafdas dfs sdf asf assdß");
+        
+                        bw.close();
+        
+                }
+        }
+        ```
+        
+    - Podemos utilizar o teclado como fonte de dados ao passar para a referencia **`InputString`**  a o atributo estatico **`[System.in](http://System.in)`**
+    - Podemos analogamente fazer com que a entrada seja retornada na tela, passando para a referencia **`OutputString`** o valor **`System.out`**
+    - Podemos usar as referencias **`InputStream`** e **`OutputStream`** para passar e receber dados via rede através de Sockets (que tem uma classe em Java)
+    - Esse exemplo serve pra motrar que muitas bibliotecas usam as classes **`InputStream`** e **`OutputStream`** para fazer leitura e registro de dados, elas são a base pra todas as lógicas de **input/output**
+    - Existem 4 classes abstratas básicas pra tratamento de dados:
+    
+    **`InputStream`** trabalha com **entrada** de dados **binarios**
+    **`OutputStream`** trabalha com **saida** de dados **binários**
+    **`Reader`** trabalha com **entrada** de dados no formato de **caracteres**
+    **`Writer`** trabalha com **saida** de dados no formato de **caracteres**
+    - Existem classes como **`InputStreamReader`** e **`OutputStreamWriter`** que fazem a conversão das classes de tipos binários para caracteres
+- Tópicos aprendidos
+    - escrever em arquivos;
+    - escrever usando outputs diferentes;
+    - Ler e escrever dados abstraindo implementação;
+    - Classes abstratas e concretas para escrita e leitura.
