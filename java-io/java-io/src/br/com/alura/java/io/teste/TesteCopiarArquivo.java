@@ -17,16 +17,12 @@ public class TesteCopiarArquivo {
 	public static void main(String[] args) throws IOException {
 
 
-		InputStream fis = new FileInputStream("lorem.txt");
+		InputStream fis = new FileInputStream("lorem.txt"); // System.in; 
 		Reader isr = new InputStreamReader(fis);
 		BufferedReader br = new BufferedReader(isr);
 
-		// FileOutputStream é um OutputStream
-		OutputStream os = new FileOutputStream("lorem2.txt");
-		// OutputStreamWriter é um Writer
+		OutputStream os = new FileOutputStream("lorem2.txt"); // System.out;
 		Writer osw = new OutputStreamWriter(os);
-		// BufferedWriter não pode ser referenciado como Writer, 
-		// pois perderia o método write()
 		BufferedWriter bw = new BufferedWriter(osw);
 		
 		String linha = br.readLine();
