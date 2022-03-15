@@ -107,3 +107,105 @@
     - escrever usando outputs diferentes;
     - Ler e escrever dados abstraindo implementação;
     - Classes abstratas e concretas para escrita e leitura.
+
+## Aula 3 - FileWriter e PrintStream
+
+- Minhas notas
+    
+    [1/8]
+    
+    - Podemos simplificar a escrita de código ao importar um arquivo para escrita usando a classe **`FileWriter`** ao invés das classes **`FileOutputStream`** > **`OutputStreamWriter`** > **`BufferedWriter`**
+    - Apesar disso, para podermos usar o método **`newLine()`** precisamos criar um **`BufferedWriter`** que receba o **`FileWriter`**, ainda assim podemos não fazer isso e substituir o método por **`write(””)`**
+    - Código
+        
+        ```java
+        					// CÓDIGO OMITIDO //
+        
+        FileWriter fw = new FileWriter("lorem.txt");
+        
+        fw.write("primeira linha a ser inserida");
+        fw.write(System.lineSeparator()); // fw.write(""); // fw.write("\n");
+        fw.write("segunda linha a ser inserida");
+        ```
+        
+        ```java
+        					// CÓDIGO OMITIDO //
+        
+        // agora instanciando um BufferedWriter:
+        FileWriter fw = new FileWriter("lorem.txt");
+        BufferedWriter bw = new BufferedWriter(fw);
+        
+        bw.write("primeira linha a ser inserida");
+        bw.newLine();
+        bw.write("segunda linha a ser inserida");
+        ```
+        
+        ```java
+        					// CÓDIGO OMITIDO //
+        
+        // ou ainda:
+        BufferedWriter bw = new BufferedWriter(new FileWriter("lorem.txt"));
+        
+        bw.write("primeira linha a ser inserida");
+        bw.newLine();
+        bw.write("segunda linha a ser inserida");
+        ```
+        
+    
+    [3/8]
+    
+    - Também é possível utilizar o **`PrintStream`** para escrever em arquivos.
+    - Essa classe era a padrão na versão 1.0 do Java e é anterior as outras implementações de Writers. Inclusive atributo **`System.out`** utiliza sua essa classe para retornar Strings.
+    - Código
+        
+        ```java
+        			// CÓDIGO OMITODO
+        
+        PrintStream ps = new PrintStream("arquivo.txt");
+        
+        ps.println("primeira linha")
+        ps.println();
+        ps.println("terceira linha");
+        ```
+        
+    - Essa alternativa permitia escrever numa **`Stream`** de dados abstraindo a conversão do objeto para o tipo **`Writer`**.
+    - Existe ainda uma classe chamada **`PrintWriter`** que possui vários métodos para imprimir varios tipos de dados, ele funciona de forma semelhante ao **`PrintStream`**
+    
+    [7/8]
+    
+    - Podemos medir o tempo de execução de um código utilizando um método da classe **`System`** chamado **`currentTimeMillis()`**
+    - Código
+        
+        ```java
+        public class TesteEscritaFileWriter {
+        
+            public static void main(String[] args) throws IOException {
+        
+                long ini = System.currentTimeMillis(); // inicia a contagem
+        
+                BufferedWriter bw = new BufferedWriter(new FileWriter("lorem2.txt"));
+        
+                bw.write("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod");
+                bw.newLine();
+                bw.write("tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam");
+        
+                bw.close();
+        
+                long fim = System.currentTimeMillis(); // finaliza contagem
+        
+                System.out.println("Passaram " + (fim - ini) + " milissegundos");
+        
+            }
+        }
+        ```
+        
+    
+- Tópicos aprendidos
+    - Várias alternativas para estabelecer uma saída para um arquivo de texto, como:
+        - A classe `FileWriter`
+        - A classe `PrintStream`
+        - A classe `PrintWriter`
+    - Alguns detalhes da classe `System`, como :
+        - O atributo `System.out` é do tipo `PrintStream`
+        - O método `System.lineSeparator()` devolve os caracteres que representam uma nova linha
+        - O método `System.currentTimeMillis()` devolve os milissegundos que passaram desde 1 de janeiro de 1970
