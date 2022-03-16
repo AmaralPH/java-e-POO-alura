@@ -314,3 +314,35 @@
     2. Uso de delimitador com Scanner
     3. Formatação de texto e também de números
     4. Definição de Localização para formatar o texto.
+
+## Aula 5 - Encoding e Charsets [tempo: 1h15min]
+
+- Minhas notas
+    - [1/9] Character Sets
+        - No inicio da computação existia um problema para representar caracteres no computador, pois regiões diferentes tinham conjuntos de caracteres diferentes
+        - Surgiram varias tabelas de referencia para conjuntos diferentes de caracteres, mas isso levava a um problema de incompatibilidade entre máquinas de regiões diferentes
+        - Foi criada uma tabela (**charset**) universal chamada **Unicode** que tinha representações numericas (**codepoints**) para todos os caracteres já criados
+        - Essa tabela não definia uma forma de armazenamento na máquina, somente uma referencia numerica para cada caractere (além de outras informações)
+        - Junto com ela então foram criados **Encodings** que serviam para gravar essas referencias na máquina e permitir o acesso local aos caracteres.
+        - O encoding mais utilizado é o **UTF-8**
+        - UTF significa **Unicode Transformation Format**
+        - O encoding varia de SO pra SO
+    - [4/9] Encoding no Windows
+        - O encoding padrão do windows é o **windows-1252**
+        - Se criamos uma referencia do tipo **`byte`** com o valor de um determinado caractere usando um **encoding** **X**, teremos problemas ao tentar converte-lo para uma **`String`** usando um **encoding Y** porque a representação binária daquele caractere pode ser diferente de um encoding para o outro.
+        - Isso acontece mesmo que ambos encodings tenham como base o Unicode, porque a representação binária daquele mesmo caractere da tabela Unicode pode ter um mapeamento local diferente naquele encoding.
+        
+    - [6/9] Encoding com java.io
+        - Todos os programas, arquivos e sistemas tem um **encoding** padrão
+        - Podemos forçar as classes de **leitura** e **escrita** do **`[java.io](http://java.io)`** a utilizar um tipo especifico de encoding, fazemos isso passando para o construtor das classes o nome do encoding que desejamos utilizar
+        
+    
+- Resumo da aula - Alura
+    
+    Nessa aula você aprendeu sobre Unicode, Encodings e Charsets.
+    
+    Conheceu o problema dos **Encodings**: onde diferentes codepages são usados para escrever e exibir informações em seu computador. A solução foi dada por um consórcio que criou uma tabela genérica chamada **Unicode** contendo todos os caracteres do mundo em números denominados **codepoints**. A segunda parte da solução é aplicar diferentes Encodings para definir como os bytes são gravados nos arquivos. Os encodings são tabelas que transformam cada codepoint em seu caractere específico, dependendo de determinada região. Também observou que os encodings utilizados dependem muito de cada sistema operacional.
+    
+    Usando o Windows, você implementou um programa para verificar a implementação do Java para Unicodes e Encodings e conheceu várias classes e métodos. Aprendeu que a classe String possui um método chamado `codePointAt()` para revelar o codepoint de determinado caractere a partir de sua posição na string. Descobriu que a classe que representa um encoding ou *Character Set* é `Charset` e o método estático para retornar uma referência com o charset default é `defaultCharset()`. Aprendeu que a classe String também possui um método para transformar os caracteres em bytes, o `getBytes()`, que usado sem argumento de entrada utiliza o charset padrão. Existem também duas sobrecargas para esse método, onde você pode informar o charset que deseja utilizar para a transformação. Conheceu a classe `StandardCharsets`, do pacote `java.nio`, que possui constantes pra os principais charsets. Por fim simulou o problema de encodings, gerando uma nova string a partir de um construtor que tinha como argumentos os bytes transformados no charset e o charset desejado para transformação. A solução foi garantir que o mesmo charset fosse aplicado, tanto na entrada quanto na saída.
+    
+    As classes `Scanner` e `InputStreamReader` possuem sobrecargas de construtores que recebem como argumento qual charset será utilizado para fazer a transformação dos bytes em strings. De modo análogo para escrita, a classe `PrintWriter` também permite informar qual charset será utilizado para transformar a string nos bytes específicos.
