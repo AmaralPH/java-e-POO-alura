@@ -14,7 +14,7 @@ public class TesteLeitura {
 		// FileInputStream é um InputStream
 		InputStream fis = new FileInputStream("lorem.txt");
 		// InputStreamReader é um Reader
-		Reader isr = new InputStreamReader(fis);
+		Reader isr = new InputStreamReader(fis, "UTF-8");
 		// BufferedReader não pode ser referenciado como Reader, 
 		// pois perderia o método readLine()
 		BufferedReader br = new BufferedReader(isr);

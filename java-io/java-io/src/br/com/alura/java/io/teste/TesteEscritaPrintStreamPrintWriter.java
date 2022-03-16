@@ -8,7 +8,7 @@ public class TesteEscritaPrintStreamPrintWriter {
 
 	public static void main(String[] args) throws IOException {
 		
-		PrintStream ps = new PrintStream("lorem2.txt");
+		PrintStream ps = new PrintStream("lorem2.txt", "UTF-8");
 		
 		ps.println("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod");
 		ps.println();
@@ -18,7 +18,7 @@ public class TesteEscritaPrintStreamPrintWriter {
 		
 		// também podemos utilizar a classe PrintWriter
 		
-		PrintWriter pw = new PrintWriter("lorem2.txt");
+		PrintWriter pw = new PrintWriter("lorem2.txt", "UTF-8");
 		
 		pw.println("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod");
 		pw.println();
