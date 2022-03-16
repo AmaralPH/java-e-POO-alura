@@ -53,7 +53,6 @@
     - Para ler todas as linhas podemos fazer um loop que percorre todas as linhas do buffer
     - Um arquivo pode ser lido como **Stream** ou **Reader**, o primeiro para bytes e o segundo para caracteres
     - Esses dois tipos de classes precisam ser compreendidos para se trabalhar bem com input de dados
-- Dúvidas
 - Notas da Alura
     1. Abertura de arquivos;
     2. Leitura linha a linha do arquivo e detecção de seu fim;
@@ -209,6 +208,7 @@
         - O atributo `System.out` é do tipo `PrintStream`
         - O método `System.lineSeparator()` devolve os caracteres que representam uma nova linha
         - O método `System.currentTimeMillis()` devolve os milissegundos que passaram desde 1 de janeiro de 1970
+        
 
 ## Aula 4 - Usando java.util.Scanner [tempo: 1h35min]
 
@@ -331,7 +331,6 @@
         - O encoding padrão do windows é o **windows-1252**
         - Se criamos uma referencia do tipo **`byte`** com o valor de um determinado caractere usando um **encoding** **X**, teremos problemas ao tentar converte-lo para uma **`String`** usando um **encoding Y** porque a representação binária daquele caractere pode ser diferente de um encoding para o outro.
         - Isso acontece mesmo que ambos encodings tenham como base o Unicode, porque a representação binária daquele mesmo caractere da tabela Unicode pode ter um mapeamento local diferente naquele encoding.
-        
     - [6/9] Encoding com java.io
         - Todos os programas, arquivos e sistemas tem um **encoding** padrão
         - Podemos forçar as classes de **leitura** e **escrita** do **`[java.io](http://java.io)`** a utilizar um tipo especifico de encoding, fazemos isso passando para o construtor das classes o nome do encoding que desejamos utilizar
@@ -346,3 +345,86 @@
     Usando o Windows, você implementou um programa para verificar a implementação do Java para Unicodes e Encodings e conheceu várias classes e métodos. Aprendeu que a classe String possui um método chamado `codePointAt()` para revelar o codepoint de determinado caractere a partir de sua posição na string. Descobriu que a classe que representa um encoding ou *Character Set* é `Charset` e o método estático para retornar uma referência com o charset default é `defaultCharset()`. Aprendeu que a classe String também possui um método para transformar os caracteres em bytes, o `getBytes()`, que usado sem argumento de entrada utiliza o charset padrão. Existem também duas sobrecargas para esse método, onde você pode informar o charset que deseja utilizar para a transformação. Conheceu a classe `StandardCharsets`, do pacote `java.nio`, que possui constantes pra os principais charsets. Por fim simulou o problema de encodings, gerando uma nova string a partir de um construtor que tinha como argumentos os bytes transformados no charset e o charset desejado para transformação. A solução foi garantir que o mesmo charset fosse aplicado, tanto na entrada quanto na saída.
     
     As classes `Scanner` e `InputStreamReader` possuem sobrecargas de construtores que recebem como argumento qual charset será utilizado para fazer a transformação dos bytes em strings. De modo análogo para escrita, a classe `PrintWriter` também permite informar qual charset será utilizado para transformar a string nos bytes específicos.
+    
+
+## Aula 6 - Serialização de Objetos [tempo: 1h49min]
+
+- Minhas notas
+    - [1/10] Serialização Java
+        - A serialização é a transformação do objeto Java - localizado na memória - em um fluxo de bits e bytes, e vice-versa;
+        - A biblioteca **`[java.io](http://java.io)`** tem classes de escrita e leitura para realizar esse processo, elas recebem no contrutor objetos do tipo **`File`** que contem as classes a serem gravadas ou lidas;
+        - Os tipos as classes que implementam esses processos são **`ObjectOutputStream`** e **`ObjectInputStream`** respectivamente;É
+        - **`ObjectOutputStream`  Objeto ⇒ Bits e Bytes
+        `ObjectInputStream`  Bits e Bytes ⇒ Objeto**
+        - Código
+            
+            ```java
+            public class TesteSerializacaoEscrita {
+            	public static void mains(String[] args) throws IOException {
+            		String nome = "Pedro Amaral";
+            
+            		ObjectOutputString oos = new ObjectOutputStrem(
+            															new FileOutputStream("object.bin"));
+            		oos.writeObject(nome);
+            		oos.close();
+            	}
+            }
+            ```
+            
+            ```java
+            public class TesteSerializacaoLeitura {
+            	public static void mains(String[] args) throws Exception {
+            		ObjectInputString ois = new ObjectInputString(
+            																	new FileInputStream("object.bin"));
+            		// precisamos fazer um (cast) pois o objeto chega em binario
+            		String nome = (String) ois.readObject();
+            		ois.close();
+            
+            		System.out.println(nome);
+            	}
+            }
+            ```
+            
+        - Podemos precisar usar esse conhecimento para gravar um objeto no HD e recupera-lo posteriormente;
+        - É possivel termos uma funcionalidade em uma JVM (máquina rodando java) e tranferi-la pra outra usando a rede, essa transferencia é feita através de **envio e recebimento de dados**. **Dados em Java são objetos** e para fazer esse fluxo dos objetos **precisam ser serializados;**
+        - O fluxo de Objeto para Bytes é a **serialização**
+        O fluxo de Bytes para Objeto é **desserialização**
+    - [3/10] Serializando qualquer objeto
+        - Para serializar um objeto de uma classe, quando esse objeto não é de uma classe padrão do Java, essa classe precisa implementar a interface **`Serializable`**
+        - Quando **desserializarmos** o objeto daquela classe, a JVM vai comparar a versão do objeto instanciado com a definição da classe, isso é feito atraves do atributo estatico do tipo long chamado `**serialVersionUID**`
+        - Podemos adicionar um ID default usando a interface do Eclipse
+        - O arquivo serializado tem um ID gerado automáticamente
+        - Ao executar a função o Java compara os dois IDs e se forem diferentes dispara uma Exceção
+        - É uma boa pratica forçar uma versão declarando o atributo `**serialVersionUID`** na definição da classe, pois se a classe for atualizada depois da serialização, ao tentarmos utilizar a versão que estava serializada, ocorrerá um erro de compatibilidade lançando a exceção `**InvalidClassException**`
+        - A versão só deve ser alterada caso ocorram mudanças na classe que a tornem incompativel com a versão anterior, como uma mudança no tipo de um parametro de um método
+        - Esse tópico ficou bem confuso pra mim
+        - Dúvidas
+            - Se um objeto foi serializado e o projeto está desserializando e usando aquele objeto, de que forma ele vai ser comparado com o objeto que deu origem a versão serializada?
+            - Supondo que eu receba um objeto serializado, desserialize e use ele no meu projeto. Uma mudança na versão original do objeto só faria diferença pro meu projeto se eu recebesse a nova versão dele.
+            - Será que esse versionamento serve pra indicar que as instancias feitas com a v1 devem ser modificadas se eu substituir o objeto pela v2? É a unica forma que consigo pensar que esse versionamento seria relevante.
+        - Questão da Alura
+            - O `serialVersionUID`
+             define a versão atual da classe e esse valor fica gravado na representação binária do objeto.
+            - 
+                
+                Correto, pois o `serialVersionUID` é da classe (por isso estático) e define a versão ou identificação numérica da classe. Cada vez que alteramos algo incompatível na classe, devemos alterar o seu valor.
+                
+                Sempre quando serializamos o objeto, também será serializado o valor do `serialVersionUID`.
+                
+    - [5/10] Serializando com herança
+        - Para serializar classes herdadas que utilizem metodos, construtor ou atributos da super classe, precisamos que a super classe implemente a interface **`Serializable`**
+        - Se a superclasse implementa a interface, as classes filhas herdam esse comportamento e não precisam implementa-la
+        - Classes utilizadas internamente por composição na classe serializada, também precisam implementar a interface **`Serializable`**
+        - Podemos escapar dessa necessidade se na declaração do atributo que é de outro tipo de classe, utilizarmos a palavra reservada **`transient`** isso irá informar para o Java que o objeto que aquela variavel vai referenciar não precisa ser serializado
+        - Ao fazer isso, quando tentarmos acessar essa váriavel através de uma instancia criada a partir do objeto desserializado, receberemos o valor **`null`**
+        
+- Resumo da aula - Alura
+    - A criação do fluxo binário a partir de um objeto é chamado de **serialização**;
+    - A criação de um objeto a partir de um um fluxo binário é chamado de **desserialização**;
+    - A classe deve implementar a interface `java.io.Serializable`;
+    - A serialização/desserialização funciona em cascata e também com herança;
+    - Existe a palavra-chave `transient` para indicar que o atributo não deve ser serializado;
+    - É boa prática colocar o atributo estático `serialVersionUID` para versionar a classe;
+    - A versão sempre fica guardada no fluxo binário;
+    - Se não colocarmos explicitamente o `serialVersionUID`, a versão será gerada dinamicamente;
+    - É raro usar a serialização na "unha", mas é um conhecimento importante, pois será utilizado por outras bibliotecas.
