@@ -175,3 +175,47 @@
     - Caso queiramos checar se um Set contem um elemento com o atributo nome == “Pedro” por exemplo, precisamos sobrescrever o método equals() para que a comparação seja feita pelo nome e não pela referencia
     - Além de sobrescrever a função equals, como o set usa o mapeamento Hash, precisamos também sobrescrever o método hashCode() que irá fazer a definição da chave do elemento
     - Podemos fazer essa implementação usando o Eclipse. Para isso digitamos CTRL + 3, depois “equals”, enter e selecionamos qual atributo da classe vai ser usado para a comparação e para o hashCode
+    
+
+## Aula 8 - Outros sets e iterators [tempo: 47min]
+
+- **Minhas notas**
+    - Existem outras implementações de **`Set`** além do **`hashSet`** como o **`LinkedHashSet`**, essa implementação é ordenada, por exemplo.
+    - Existe ainda a implementação **`TreeSet`** mas essa implementação precisa que os itens passados como generics tenham implementada a interface **`Comparable`**
+    - O **`Iterator`** é um um objeto antigo usado para percorrer coleções. Todas as coleções dão acesso a ele, ele é criado chamando o método **`.iterator()`** a partir de qualquer coleção
+    - Esse objeto tem dois métodos: **`.hasNext()`** e **`.next()`**
+    - Ele é usado dentro de um loop while, após percorrida a lista, se precisarmos percorre-la de novo, precisamos criar um novo iterador
+    - Código:
+        
+        ```java
+        Set<Aluno> alunos = javaColecoes.getAlunos();
+        Iterator<Aluno> iterador = alunos.iterator();
+        
+        while (iterador.hasNext()) {
+            System.out.println(iterador.next());
+        }
+        ```
+        
+    - Podemos passar uma classe que implemente a interface **`Comparator`** como parametro na instanciação de um **`TreeSet`**, se fizermos isso, mesmo que a classe dos elementos não possua a interface **`Comparable`**, a **`TreeSet`** vai usar o criterio de ordenação do **`Comparator`**
+    
+
+## Aula 9 - Qual Collection usar [tempo: 15min]
+
+- **Minhas notas**
+    - É uma boa prática declarar uma Collection usando a referencia **`Collection`**, pois com ela será possivel utilizar os métodos básicos: **`size`**, **`contains`**, **`add`** e **`remove`**.
+    - Caso o código passe a utilizar um método mais especifico como get ou se beneficie de performance na busca com contais, ai sim fará sentido voltar na declaração e trocar a referencia **`Collection`** para **`Set`** ou **`List`**, sem que isso impacte o código já escrito
+    - Declarar sempre com a classe mais genérica
+
+## Aula 10 - Mapas [tempo: 40min]
+
+- **Minahs notas**
+    - A classe **`Map`** não é filha de **`Collection`**
+    - O tipo de **`Map`** mais utilizado é o **`HashMap`**
+    - O método de inserção de um objeto ao **`Map`** é o **`.put(chave, valor)`**
+    - Se declara um Map com a seguinte sintaxe: **`Map<Integer, Aluno> = new HashMap(aluno.getMatricula(), aluno)`**
+    - O primeiro valor no generics é o tipo da chave e o segundo é o tipo do valor
+    - Buscamos um valor em um **`HashMap`** com o método **`.get()`**
+    - Caso a chave passada para o **`get`** não exista no **`HashMap`** ele retorna **`null`**
+    - Podemos criar um **`Map`** que recebe como valor um **`Set`** caso queiramos que uma mesma chave dê acesso a uma coleção de valores
+    - Podemos criar um **`Map`** ordenado através da classe **`LinkedHashMap`**
+    - A interface **`Map`** pode ser vista como 3 coleções diferentes, ela é um `**Set` de chaves**, uma **`Collection` de valores** e um `**Set` de mapeamento chave-valor**
