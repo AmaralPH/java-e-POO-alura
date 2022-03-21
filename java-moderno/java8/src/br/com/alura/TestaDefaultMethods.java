@@ -39,7 +39,9 @@ public class TestaDefaultMethods {
 	
 		// sort feito com uma expressão lambda
 		palavras.sort((s1, s2) -> s1.length() - s2.length());
-		palavras.forEach(s -> System.out.println(s));
+//		palavras.forEach(s -> System.out.println(s));
+		// usando method reference
+		palavras.forEach(System.out::println);
 	}
 }
 
