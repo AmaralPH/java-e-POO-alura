@@ -12,13 +12,13 @@ Ela é dividida em 3 partes:
     - [X] - Java OO: introdução à Orientação a Objetos
     - [X] - Java Polimorfismo: entenda herança e interfaces
     - [X] - Java Exceções: aprenda a criar, lançar e controlar exceções
-  - [ ] 2. Conhecer as principais bibliotecas
+  - [X] 2. Conhecer as principais bibliotecas
     - [X] - Java e java.lang: programe com a classe Object e String
     - [X] - Java e java.util: Coleções, Wrappers e Lambda expressions
-    - [ ] - Java e java.io: Streams, Reader e Writers
-    - [ ] - Java Collections: Dominando Listas, Sets e Mapas
+    - [X] - Java e java.io: Streams, Reader e Writers
+    - [X] - Java Collections: Dominando Listas, Sets e Mapas
   - [ ] 3. Aprofundar em Java moderno e TDD
-    - [ ] - Java moderno: tire proveito dos novos recursos do Java 8
+    - [X] - Java moderno: tire proveito dos novos recursos do Java 8
     - [ ] - TDD e Java: testes automatizados com JUnit
 
 
