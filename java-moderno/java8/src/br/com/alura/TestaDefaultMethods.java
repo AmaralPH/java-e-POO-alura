@@ -13,14 +13,36 @@ public class TestaDefaultMethods {
 		palavras.add("casa do código");
 		palavras.add("caelum");
 		
-		Consumer<String> consumidor = new ImprimeNaLinha();
-		palavras.forEach(consumidor);
+		// criando uma classe Consumer
+//		System.out.println("---criando uma classe Consumer---");
+//		Consumer<String> consumidor = new ImprimeNaLinha();
+//		palavras.forEach(consumidor);
+		
+		// utilizando uma classe abstrata
+//		System.out.println("---utilizando uma classe abstrata---");
+//		palavras.forEach(new Consumer<String>() {
+//			public void accept(String palavra) {
+//				System.out.println(palavra);
+//			}
+//		});
+		
+		// utilizando uma expressão lambda
+		System.out.println("---utilizando uma expressão lambda---");
+		palavras.forEach(s -> System.out.println(s));
 		
 		System.out.println("------ lista ordenada -----");
-		
-		Comparator<String> comparador = new ComparaStringSize();
-		palavras.sort(comparador);
-		palavras.forEach(consumidor);	}
+
+		// sort consumindo uma classe criada
+//		 Comparator<String> comparador = new ComparaStringSize();
+//		 palavras.sort(comparador);
+//		 palavras.forEach(consumidor);	}
+	
+		// sort feito com uma expressão lambda
+		palavras.sort((s1, s2) -> s1.length() - s2.length());
+//		palavras.forEach(s -> System.out.println(s));
+		// usando method reference
+		palavras.forEach(System.out::println);
+	}
 }
 
 class ImprimeNaLinha implements Consumer<String> {
@@ -38,5 +60,4 @@ class ComparaStringSize implements Comparator<String> {
 	public int compare(String s1, String s2) {
 		return s1.length() - s2.length();
 	}
-
 }
