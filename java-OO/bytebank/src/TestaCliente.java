@@ -6,7 +6,7 @@ public class TestaCliente {
 		Conta contaDoPedro = new Conta(1334, 23511);
 		
 		pedro.setNome("Pedro");
-		pedro.setCpf("342.377.578-54");
+		pedro.setCpf("111.222.333-44");
 		pedro.setProfissao("programador");
 		
 		contaDoPedro.setTitular(pedro);
