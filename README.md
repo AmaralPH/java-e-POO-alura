@@ -17,9 +17,9 @@ Ela é dividida em 3 partes:
     - [X] - Java e java.util: Coleções, Wrappers e Lambda expressions
     - [X] - Java e java.io: Streams, Reader e Writers
     - [X] - Java Collections: Dominando Listas, Sets e Mapas
-  - [ ] 3. Aprofundar em Java moderno e TDD
+  - [X] 3. Aprofundar em Java moderno e TDD
     - [X] - Java moderno: tire proveito dos novos recursos do Java 8
-    - [ ] - TDD e Java: testes automatizados com JUnit
+    - [X] - TDD e Java: testes automatizados com JUnit
 
 
 # Objetivo
